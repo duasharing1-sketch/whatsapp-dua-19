@@ -1,18 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Share Du'a on WhatsApp</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dua 19</title>
 </head>
 <body>
-<a id="manualLink" href="#" target="_blank" style="display:none;">Open WhatsApp</a>
+  <a id="manualLink" href="#" target="_blank" style="display:none;">Open WhatsApp</a>
+  <script>
+    const message = `*Will you be raised with the righteous?*
 
-<script>
-const message = `*Will you be raised with the righteous?*
+This beautiful dua calls upon Maliki Yawmid-Deen (The Master of the Day of Judgment) — asking Allah ﷻ to grant us resurrection in the company of the most honored souls: The *Anbiya (Prophets)*, the *Awliya (His beloved friends)*, the *Siddiqeen (truthful ones)*, the *Shuhada (martyrs)*, and the *Saliheen (righteous)*.
 
-This beautiful dua calls upon Maliki Yawmid-Deen (The Master of the Day of Judgment) — asking Allah ﷻ to grant us resurrection in the company of the most honored souls:
-The Anbiya (Prophets), the Awliya (His beloved friends), the Siddiqeen (truthful ones), the Shuhada (martyrs), and the Saliheen (righteous).
 Because on that Day, company will define destiny…
 
 “Whoever obeys Allah and the Messenger, then they will be in the company of those on whom Allah has bestowed His grace: the Prophets, the truthful, the martyrs, and the righteous. What an excellent company they are!” — Qur’an (Surah An-Nisa 4:69)
@@ -39,27 +38,26 @@ May Allah accept it from you, and reward you for all those it reaches through yo
 
 Ameen`;
 
-const encodedText = encodeURIComponent(message);
-const waProtocol = "whatsapp://send?text=" + encodedText;
-const waWeb = "https://wa.me/?text=" + encodedText;
+    const encodedText = encodeURIComponent(message);
+    const waProtocol = "whatsapp://send?text=" + encodedText;
+    const waWeb = "https://wa.me/?text=" + encodedText;
+    const manualLink = document.getElementById('manualLink');
+    manualLink.href = waWeb;
 
-const manualLink = document.getElementById('manualLink');
-manualLink.href = waWeb;
-
-async function tryShare() {
-  try {
-    if (navigator.share) {
-      await navigator.share({ text: message });
-    } else {
-      window.location.href = waProtocol;
-      setTimeout(() => { window.location.href = waWeb; }, 1200);
+    async function tryShare() {
+      try {
+        if (navigator.share) {
+          await navigator.share({ text: message });
+        } else {
+          window.location.href = waProtocol;
+          setTimeout(() => { window.location.href = waWeb; }, 1200);
+        }
+      } catch (err) {
+        window.location.href = waWeb;
+      }
     }
-  } catch (err) {
-    window.location.href = waWeb;
-  }
-}
 
-window.addEventListener('load', tryShare);
-</script>
+    window.addEventListener('load', tryShare);
+  </script>
 </body>
 </html>
