@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Share Du'a on WhatsApp</title>
+</head>
+<body>
+<a id="manualLink" href="#" target="_blank" style="display:none;">Open WhatsApp</a>
+
+<script>
+const message = `*Will you be raised with the righteous?*
+
+This beautiful dua calls upon Maliki Yawmid-Deen (The Master of the Day of Judgment) — asking Allah ﷻ to grant us resurrection in the company of the most honored souls:
+The Anbiya (Prophets), the Awliya (His beloved friends), the Siddiqeen (truthful ones), the Shuhada (martyrs), and the Saliheen (righteous).
+Because on that Day, company will define destiny…
+
+“Whoever obeys Allah and the Messenger, then they will be in the company of those on whom Allah has bestowed His grace: the Prophets, the truthful, the martyrs, and the righteous. What an excellent company they are!” — Qur’an (Surah An-Nisa 4:69)
+
+*Ya Allah (O Allah), Ya Maliki Yawmid-Deen (O Master of the Day of Judgment), on the Day of Resurrection, raise us in the company of the Anbiya (Prophets), Awliya (Your close friends), Sidiqeen (the truthful), Shuhada (the martyrs), and Saliheen (the righteous).*
+
+This dua is part of *The Supplication of Infinite Blessings* — a powerful collection of heartfelt supplications designed to benefit you in both this life and the next. 
+
+*At Dua Sharing, our mission is simple*: 
+
+To encourage sincere dua, meaningful sharing, and to multiply blessings through a growing global chain of people making dua for one another every single day.
+
+As Rasulullah ﷺ said: 
+
+“The supplication of a Muslim for his brother in his absence will certainly be answered. Every time he makes a supplication for good for his brother, the angel appointed for this task says: ‘Ameen! And may it be for you too.”
+
+Every post we share is taken directly from the full Supplication of Infinite Blessings — with the aim of moving hearts, inspiring action, and reminding us all of what truly matters.
+
+Access the full supplication in both English and Arabic at: https://www.duasharing.com
+
+When you share this post, you’re not simply sharing a dua. You’re opening the door to millions of people making sincere dua for you — with the Malaika (Angels) themselves saying “Ameen” to every single one.
+
+May Allah accept it from you, and reward you for all those it reaches through you.
+
+Ameen`;
+
+const encodedText = encodeURIComponent(message);
+const waProtocol = "whatsapp://send?text=" + encodedText;
+const waWeb = "https://wa.me/?text=" + encodedText;
+
+const manualLink = document.getElementById('manualLink');
+manualLink.href = waWeb;
+
+async function tryShare() {
+  try {
+    if (navigator.share) {
+      await navigator.share({ text: message });
+    } else {
+      window.location.href = waProtocol;
+      setTimeout(() => { window.location.href = waWeb; }, 1200);
+    }
+  } catch (err) {
+    window.location.href = waWeb;
+  }
+}
+
+window.addEventListener('load', tryShare);
+</script>
+</body>
+</html>
