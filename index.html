@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dua 19</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dua 1 - Dua Sharing</title>
 </head>
 <body>
   <a id="manualLink" href="#" target="_blank" style="display:none;">Open WhatsApp</a>
+
   <script>
     const message = `*Will you be raised with the righteous?*
 
 This beautiful dua calls upon Maliki Yawmid-Deen (The Master of the Day of Judgment) — asking Allah ﷻ to grant us resurrection in the company of the most honored souls: The *Anbiya (Prophets)*, the *Awliya (His beloved friends)*, the *Siddiqeen (truthful ones)*, the *Shuhada (martyrs)*, and the *Saliheen (righteous)*.
 
-Because on that Day, company will define destiny…
+*The Duʿāʾ:*  
 
-“Whoever obeys Allah and the Messenger, then they will be in the company of those on whom Allah has bestowed His grace: the Prophets, the truthful, the martyrs, and the righteous. What an excellent company they are!” — Qur’an (Surah An-Nisa 4:69)
+Ya Allah (O Allah), Ya Maliki Yawmid-Deen (O Master of the Day of Judgment), on the Day of Resurrection, raise us in the company of the Anbiya (Prophets), Awliya (Your close friends), Sidiqeen (the truthful), Shuhada (the martyrs), and Saliheen (the righteous).
 
-*Ya Allah (O Allah), Ya Maliki Yawmid-Deen (O Master of the Day of Judgment), on the Day of Resurrection, raise us in the company of the Anbiya (Prophets), Awliya (Your close friends), Sidiqeen (the truthful), Shuhada (the martyrs), and Saliheen (the righteous).*
+This duʿāʾ is part of the *Supplication of Infinite Blessings* — a growing chain of heartfelt duʿāʾs shared by countless believers like you, worldwide.
 
-This dua is part of *The Supplication of Infinite Blessings* — a powerful collection of heartfelt supplications designed to benefit you in both this life and the next. 
+And because in an authentic hadith reported by Muʿādh ibn Anas (ra), Rasulullah ﷺ encouraged us to share beneficial knowledge, I humbly ask that you please forward this message far and wide — it only takes a few seconds, and your sharing can start a chain of duʿāʾs that continue returning to you from everyone it reaches.
 
-*At Dua Sharing, our mission is simple*: 
+When you share this message, you’re not simply sharing a duʿāʾ. You’re opening the door to countless people making sincere duʿāʾ for you daily — with the Malaika (Angels) themselves saying *“Ameen”* to every single one.
 
-To encourage sincere dua, meaningful sharing, and to multiply blessings through a growing global chain of people making dua for one another every single day.
+For detailed information on this and the full *Supplication of Infinite Blessings* in both (English + Arabic) visit: https://www.duasharing.com/
 
-As Rasulullah ﷺ said: 
+I make duʿāʾ that Allah accepts it from you, and reward you for all those it reaches through you.
 
-“The supplication of a Muslim for his brother in his absence will certainly be answered. Every time he makes a supplication for good for his brother, the angel appointed for this task says: ‘Ameen! And may it be for you too.”
+*Ameen.*`;
 
-Every post we share is taken directly from the full Supplication of Infinite Blessings — with the aim of moving hearts, inspiring action, and reminding us all of what truly matters.
+    const fallbacks = {
+      'ﷻ': 'ﷻ',
+      'ﷺ': 'ﷺ'
+    };
 
-Access the full supplication in both English and Arabic at: https://www.duasharing.com
+    let messageWithFallback = message;
+    for (const [symbol, replacement] of Object.entries(fallbacks)) {
+      messageWithFallback = messageWithFallback.replace(new RegExp(symbol, 'g'), replacement);
+    }
 
-When you share this post, you’re not simply sharing a dua. You’re opening the door to millions of people making sincere dua for you — with the Malaika (Angels) themselves saying “Ameen” to every single one.
-
-May Allah accept it from you, and reward you for all those it reaches through you.
-
-Ameen`;
-
-    const encodedText = encodeURIComponent(message);
+    const encodedText = encodeURIComponent(messageWithFallback);
     const waProtocol = "whatsapp://send?text=" + encodedText;
     const waWeb = "https://wa.me/?text=" + encodedText;
+
     const manualLink = document.getElementById('manualLink');
     manualLink.href = waWeb;
 
     async function tryShare() {
       try {
         if (navigator.share) {
-          await navigator.share({ text: message });
+          await navigator.share({ text: messageWithFallback });
         } else {
           window.location.href = waProtocol;
           setTimeout(() => { window.location.href = waWeb; }, 1200);
